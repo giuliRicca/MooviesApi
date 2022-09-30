@@ -114,14 +114,14 @@ namespace EFCorePeliculas.Entidades.Seeding
                 PosterUrl = "https://upload.wikimedia.org/wikipedia/en/8/8a/The_Avengers_%282012_film%29_poster.jpg",
             };
 
-            var GenreMovieEntity = "GenreMovie";
+            var MovieGenreEntity = "MovieGenre";
             var GenreIdProperty = "GenresId";
             var MovieIdProperty = "MoviesId";
 
             var AuditoriumMovieEntity = "AuditoriumMovie";
             var AuditoriumIdPropiedad = "AuditoriumsId";
 
-            modelBuilder.Entity(GenreMovieEntity).HasData(
+            modelBuilder.Entity(MovieGenreEntity).HasData(
                 new Dictionary<string, object> { [GenreIdProperty] = acción.Id, [MovieIdProperty] = avengers.Id },
                 new Dictionary<string, object> { [GenreIdProperty] = cienciaFicción.Id, [MovieIdProperty] = avengers.Id }
             );
@@ -136,7 +136,7 @@ namespace EFCorePeliculas.Entidades.Seeding
                 PosterUrl = "https://upload.wikimedia.org/wikipedia/en/0/00/Spider-Man_No_Way_Home_poster.jpg"
             };
 
-            modelBuilder.Entity(GenreMovieEntity).HasData(
+            modelBuilder.Entity(MovieGenreEntity).HasData(
                new Dictionary<string, object> { [GenreIdProperty] = cienciaFicción.Id, [MovieIdProperty] = noWayHome.Id },
                new Dictionary<string, object> { [GenreIdProperty] = acción.Id, [MovieIdProperty] = noWayHome.Id },
                new Dictionary<string, object> { [GenreIdProperty] = comedia.Id, [MovieIdProperty] = noWayHome.Id }
@@ -151,7 +151,7 @@ namespace EFCorePeliculas.Entidades.Seeding
                 PosterUrl = "https://upload.wikimedia.org/wikipedia/en/0/00/Spider-Man_No_Way_Home_poster.jpg"
             };
 
-            modelBuilder.Entity(GenreMovieEntity).HasData(
+            modelBuilder.Entity(MovieGenreEntity).HasData(
                new Dictionary<string, object> { [GenreIdProperty] = cienciaFicción.Id, [MovieIdProperty] = farFromHome.Id },
                new Dictionary<string, object> { [GenreIdProperty] = acción.Id, [MovieIdProperty] = farFromHome.Id },
                new Dictionary<string, object> { [GenreIdProperty] = comedia.Id, [MovieIdProperty] = farFromHome.Id }
@@ -166,7 +166,7 @@ namespace EFCorePeliculas.Entidades.Seeding
                 PosterUrl = "https://upload.wikimedia.org/wikipedia/en/5/50/The_Matrix_Resurrections.jpg",
             };
 
-            modelBuilder.Entity(GenreMovieEntity).HasData(
+            modelBuilder.Entity(MovieGenreEntity).HasData(
               new Dictionary<string, object> { [GenreIdProperty] = cienciaFicción.Id, [MovieIdProperty] = theMatrixResurrections.Id },
               new Dictionary<string, object> { [GenreIdProperty] = acción.Id, [MovieIdProperty] = theMatrixResurrections.Id },
               new Dictionary<string, object> { [GenreIdProperty] = drama.Id, [MovieIdProperty] = theMatrixResurrections.Id }

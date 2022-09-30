@@ -13,8 +13,8 @@ using NetTopologySuite.Geometries;
 namespace MoviesApi.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20220921155914_FixRelationships")]
-    partial class FixRelationships
+    [Migration("20220927141301_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -38,21 +38,6 @@ namespace MoviesApi.Migrations
                     b.HasIndex("MoviesId");
 
                     b.ToTable("AuditoriumMovie");
-                });
-
-            modelBuilder.Entity("GenreMovie", b =>
-                {
-                    b.Property<int>("GenresId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("MoviesId")
-                        .HasColumnType("int");
-
-                    b.HasKey("GenresId", "MoviesId");
-
-                    b.HasIndex("MoviesId");
-
-                    b.ToTable("GenreMovie");
                 });
 
             modelBuilder.Entity("MoviesApi.Entities.Actor", b =>
@@ -171,6 +156,9 @@ namespace MoviesApi.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Name")
+                        .IsUnique();
+
                     b.ToTable("Genres");
                 });
 
@@ -225,26 +213,26 @@ namespace MoviesApi.Migrations
                     b.ToTable("MoviesActors");
                 });
 
+            modelBuilder.Entity("MoviesApi.Entities.MovieGenre", b =>
+                {
+                    b.Property<int>("MovieId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("GenreId")
+                        .HasColumnType("int");
+
+                    b.HasKey("MovieId", "GenreId");
+
+                    b.HasIndex("GenreId");
+
+                    b.ToTable("MovieGenre");
+                });
+
             modelBuilder.Entity("AuditoriumMovie", b =>
                 {
                     b.HasOne("MoviesApi.Entities.Auditorium", null)
                         .WithMany()
                         .HasForeignKey("AuditoriumsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("MoviesApi.Entities.Movie", null)
-                        .WithMany()
-                        .HasForeignKey("MoviesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("GenreMovie", b =>
-                {
-                    b.HasOne("MoviesApi.Entities.Genre", null)
-                        .WithMany()
-                        .HasForeignKey("GenresId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -294,6 +282,25 @@ namespace MoviesApi.Migrations
                     b.Navigation("Movie");
                 });
 
+            modelBuilder.Entity("MoviesApi.Entities.MovieGenre", b =>
+                {
+                    b.HasOne("MoviesApi.Entities.Genre", "Genre")
+                        .WithMany("MoviesGenres")
+                        .HasForeignKey("GenreId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MoviesApi.Entities.Movie", "Movie")
+                        .WithMany("MoviesGenres")
+                        .HasForeignKey("MovieId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Genre");
+
+                    b.Navigation("Movie");
+                });
+
             modelBuilder.Entity("MoviesApi.Entities.Actor", b =>
                 {
                     b.Navigation("MovieActors");
@@ -306,9 +313,16 @@ namespace MoviesApi.Migrations
                     b.Navigation("CinemaOffer");
                 });
 
+            modelBuilder.Entity("MoviesApi.Entities.Genre", b =>
+                {
+                    b.Navigation("MoviesGenres");
+                });
+
             modelBuilder.Entity("MoviesApi.Entities.Movie", b =>
                 {
                     b.Navigation("MovieActors");
+
+                    b.Navigation("MoviesGenres");
                 });
 #pragma warning restore 612, 618
         }

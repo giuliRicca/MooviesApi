@@ -112,24 +112,24 @@ namespace MoviesApi.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "GenreMovie",
+                name: "MovieGenre",
                 columns: table => new
                 {
-                    GenresId = table.Column<int>(type: "int", nullable: false),
-                    MoviesId = table.Column<int>(type: "int", nullable: false)
+                    MovieId = table.Column<int>(type: "int", nullable: false),
+                    GenreId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_GenreMovie", x => new { x.GenresId, x.MoviesId });
+                    table.PrimaryKey("PK_MovieGenre", x => new { x.MovieId, x.GenreId });
                     table.ForeignKey(
-                        name: "FK_GenreMovie_Genres_GenresId",
-                        column: x => x.GenresId,
+                        name: "FK_MovieGenre_Genres_GenreId",
+                        column: x => x.GenreId,
                         principalTable: "Genres",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_GenreMovie_Movies_MoviesId",
-                        column: x => x.MoviesId,
+                        name: "FK_MovieGenre_Movies_MovieId",
+                        column: x => x.MovieId,
                         principalTable: "Movies",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -161,6 +161,35 @@ namespace MoviesApi.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "AuditoriumMovie",
+                columns: table => new
+                {
+                    AuditoriumsId = table.Column<int>(type: "int", nullable: false),
+                    MoviesId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AuditoriumMovie", x => new { x.AuditoriumsId, x.MoviesId });
+                    table.ForeignKey(
+                        name: "FK_AuditoriumMovie_Auditoriums_AuditoriumsId",
+                        column: x => x.AuditoriumsId,
+                        principalTable: "Auditoriums",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_AuditoriumMovie_Movies_MoviesId",
+                        column: x => x.MoviesId,
+                        principalTable: "Movies",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AuditoriumMovie_MoviesId",
+                table: "AuditoriumMovie",
+                column: "MoviesId");
+
             migrationBuilder.CreateIndex(
                 name: "IX_Auditoriums_CinemaId",
                 table: "Auditoriums",
@@ -173,9 +202,15 @@ namespace MoviesApi.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_GenreMovie_MoviesId",
-                table: "GenreMovie",
-                column: "MoviesId");
+                name: "IX_Genres_Name",
+                table: "Genres",
+                column: "Name",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_MovieGenre_GenreId",
+                table: "MovieGenre",
+                column: "GenreId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_MoviesActors_ActorId",
@@ -186,19 +221,19 @@ namespace MoviesApi.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Auditoriums");
+                name: "AuditoriumMovie");
 
             migrationBuilder.DropTable(
                 name: "CinemaOffers");
 
             migrationBuilder.DropTable(
-                name: "GenreMovie");
+                name: "MovieGenre");
 
             migrationBuilder.DropTable(
                 name: "MoviesActors");
 
             migrationBuilder.DropTable(
-                name: "Cinemas");
+                name: "Auditoriums");
 
             migrationBuilder.DropTable(
                 name: "Genres");
@@ -208,6 +243,9 @@ namespace MoviesApi.Migrations
 
             migrationBuilder.DropTable(
                 name: "Movies");
+
+            migrationBuilder.DropTable(
+                name: "Cinemas");
         }
     }
 }

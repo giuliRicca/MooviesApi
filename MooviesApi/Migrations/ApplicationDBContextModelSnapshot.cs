@@ -36,115 +36,6 @@ namespace MoviesApi.Migrations
                     b.HasIndex("MoviesId");
 
                     b.ToTable("AuditoriumMovie");
-
-                    b.HasData(
-                        new
-                        {
-                            AuditoriumsId = 3,
-                            MoviesId = 5
-                        },
-                        new
-                        {
-                            AuditoriumsId = 4,
-                            MoviesId = 5
-                        },
-                        new
-                        {
-                            AuditoriumsId = 1,
-                            MoviesId = 5
-                        },
-                        new
-                        {
-                            AuditoriumsId = 2,
-                            MoviesId = 5
-                        },
-                        new
-                        {
-                            AuditoriumsId = 5,
-                            MoviesId = 5
-                        },
-                        new
-                        {
-                            AuditoriumsId = 6,
-                            MoviesId = 5
-                        },
-                        new
-                        {
-                            AuditoriumsId = 7,
-                            MoviesId = 5
-                        });
-                });
-
-            modelBuilder.Entity("GenreMovie", b =>
-                {
-                    b.Property<int>("GenresId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("MoviesId")
-                        .HasColumnType("int");
-
-                    b.HasKey("GenresId", "MoviesId");
-
-                    b.HasIndex("MoviesId");
-
-                    b.ToTable("GenreMovie");
-
-                    b.HasData(
-                        new
-                        {
-                            GenresId = 1,
-                            MoviesId = 1
-                        },
-                        new
-                        {
-                            GenresId = 4,
-                            MoviesId = 1
-                        },
-                        new
-                        {
-                            GenresId = 4,
-                            MoviesId = 3
-                        },
-                        new
-                        {
-                            GenresId = 1,
-                            MoviesId = 3
-                        },
-                        new
-                        {
-                            GenresId = 3,
-                            MoviesId = 3
-                        },
-                        new
-                        {
-                            GenresId = 4,
-                            MoviesId = 4
-                        },
-                        new
-                        {
-                            GenresId = 1,
-                            MoviesId = 4
-                        },
-                        new
-                        {
-                            GenresId = 3,
-                            MoviesId = 4
-                        },
-                        new
-                        {
-                            GenresId = 4,
-                            MoviesId = 5
-                        },
-                        new
-                        {
-                            GenresId = 1,
-                            MoviesId = 5
-                        },
-                        new
-                        {
-                            GenresId = 5,
-                            MoviesId = 5
-                        });
                 });
 
             modelBuilder.Entity("MoviesApi.Entities.Actor", b =>
@@ -169,59 +60,6 @@ namespace MoviesApi.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Actors");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Biography = "Thomas Stanley Holland (Kingston upon Thames, Londres; 1 de junio de 1996), conocido simplemente como Tom Holland, es un actor, actor de voz y bailarín británico.",
-                            Birthday = new DateTime(1996, 6, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Tom Holland"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Biography = "Samuel Leroy Jackson (Washington D. C., 21 de diciembre de 1948), conocido como Samuel L. Jackson, es un actor y productor de cine, televisión y teatro estadounidense. Ha sido candidato al premio Óscar, a los Globos de Oro y al Premio del Sindicato de Actores, así como ganador de un BAFTA al mejor actor de reparto.",
-                            Birthday = new DateTime(1948, 12, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Samuel L. Jackson"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Biography = "Robert John Downey Jr. (Nueva York, 4 de abril de 1965) es un actor, actor de voz, productor y cantante estadounidense. Inició su carrera como actor a temprana edad apareciendo en varios filmes dirigidos por su padre, Robert Downey Sr., y en su infancia estudió actuación en varias academias de Nueva York.",
-                            Birthday = new DateTime(1965, 4, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Robert Downey Jr."
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Birthday = new DateTime(1981, 6, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Chris Evans"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Birthday = new DateTime(1972, 5, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Dwayne Johnson"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Birthday = new DateTime(2000, 11, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Auli'i Cravalho"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Birthday = new DateTime(1984, 11, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Scarlett Johansson"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Birthday = new DateTime(1964, 9, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Keanu Reeves"
-                        });
                 });
 
             modelBuilder.Entity("MoviesApi.Entities.Auditorium", b =>
@@ -249,64 +87,6 @@ namespace MoviesApi.Migrations
                     b.HasIndex("CinemaId");
 
                     b.ToTable("Auditoriums");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 5,
-                            AuditoriumType = 1,
-                            CinemaId = 3,
-                            Price = 250m
-                        },
-                        new
-                        {
-                            Id = 6,
-                            AuditoriumType = 2,
-                            CinemaId = 3,
-                            Price = 330m
-                        },
-                        new
-                        {
-                            Id = 7,
-                            AuditoriumType = 3,
-                            CinemaId = 3,
-                            Price = 450m
-                        },
-                        new
-                        {
-                            Id = 8,
-                            AuditoriumType = 1,
-                            CinemaId = 4,
-                            Price = 250m
-                        },
-                        new
-                        {
-                            Id = 1,
-                            AuditoriumType = 1,
-                            CinemaId = 1,
-                            Price = 220m
-                        },
-                        new
-                        {
-                            Id = 2,
-                            AuditoriumType = 2,
-                            CinemaId = 1,
-                            Price = 320m
-                        },
-                        new
-                        {
-                            Id = 3,
-                            AuditoriumType = 1,
-                            CinemaId = 2,
-                            Price = 200m
-                        },
-                        new
-                        {
-                            Id = 4,
-                            AuditoriumType = 2,
-                            CinemaId = 2,
-                            Price = 290m
-                        });
                 });
 
             modelBuilder.Entity("MoviesApi.Entities.Cinema", b =>
@@ -328,32 +108,6 @@ namespace MoviesApi.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Cinemas");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 4,
-                            Location = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (-64.21224090006244 -31.42828243550159)"),
-                            Name = "Dinosaurio Mall Ruta20"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Location = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (-64.18821224609333 -31.41983153249215)"),
-                            Name = "Hoyts Patioolmos"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Location = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (-64.18552592889834 -31.413265739499995)"),
-                            Name = "Gran Rex"
-                        },
-                        new
-                        {
-                            Id = 1,
-                            Location = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=4326;POINT (-64.205345 -31.412223)"),
-                            Name = "Hoyts Nuevocentro"
-                        });
                 });
 
             modelBuilder.Entity("MoviesApi.Entities.CinemaOffer", b =>
@@ -383,24 +137,6 @@ namespace MoviesApi.Migrations
                         .IsUnique();
 
                     b.ToTable("CinemaOffers");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 2,
-                            CinemaId = 4,
-                            DiscountPercentage = 15m,
-                            EndDate = new DateTime(2022, 9, 28, 0, 0, 0, 0, DateTimeKind.Local),
-                            StartDate = new DateTime(2022, 9, 23, 0, 0, 0, 0, DateTimeKind.Local)
-                        },
-                        new
-                        {
-                            Id = 1,
-                            CinemaId = 1,
-                            DiscountPercentage = 10m,
-                            EndDate = new DateTime(2022, 9, 30, 0, 0, 0, 0, DateTimeKind.Local),
-                            StartDate = new DateTime(2022, 9, 23, 0, 0, 0, 0, DateTimeKind.Local)
-                        });
                 });
 
             modelBuilder.Entity("MoviesApi.Entities.Genre", b =>
@@ -422,33 +158,6 @@ namespace MoviesApi.Migrations
                         .IsUnique();
 
                     b.ToTable("Genres");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Acción"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Animación"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Comedia"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Name = "Ciencia ficción"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Name = "Drama"
-                        });
                 });
 
             modelBuilder.Entity("MoviesApi.Entities.Movie", b =>
@@ -478,40 +187,6 @@ namespace MoviesApi.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Movies");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            OnBillboard = false,
-                            PosterUrl = "https://upload.wikimedia.org/wikipedia/en/8/8a/The_Avengers_%282012_film%29_poster.jpg",
-                            PremiereDate = new DateTime(2012, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Title = "Avengers"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            OnBillboard = false,
-                            PosterUrl = "https://upload.wikimedia.org/wikipedia/en/0/00/Spider-Man_No_Way_Home_poster.jpg",
-                            PremiereDate = new DateTime(2021, 12, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Title = "Spider-Man: No way home"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            OnBillboard = false,
-                            PosterUrl = "https://upload.wikimedia.org/wikipedia/en/0/00/Spider-Man_No_Way_Home_poster.jpg",
-                            PremiereDate = new DateTime(2019, 7, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Title = "Spider-Man: Far From Home"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            OnBillboard = true,
-                            PosterUrl = "https://upload.wikimedia.org/wikipedia/en/5/50/The_Matrix_Resurrections.jpg",
-                            PremiereDate = new DateTime(2022, 9, 23, 0, 0, 0, 0, DateTimeKind.Local),
-                            Title = "The Matrix Resurrections"
-                        });
                 });
 
             modelBuilder.Entity("MoviesApi.Entities.MovieActor", b =>
@@ -534,57 +209,21 @@ namespace MoviesApi.Migrations
                     b.HasIndex("ActorId");
 
                     b.ToTable("MoviesActors");
+                });
 
-                    b.HasData(
-                        new
-                        {
-                            MovieId = 4,
-                            ActorId = 2,
-                            Character = "Samuel L. Jackson",
-                            Order = 2
-                        },
-                        new
-                        {
-                            MovieId = 4,
-                            ActorId = 1,
-                            Character = "Peter Parker",
-                            Order = 1
-                        },
-                        new
-                        {
-                            MovieId = 3,
-                            ActorId = 1,
-                            Character = "Peter Parker",
-                            Order = 1
-                        },
-                        new
-                        {
-                            MovieId = 1,
-                            ActorId = 3,
-                            Character = "Iron Man",
-                            Order = 2
-                        },
-                        new
-                        {
-                            MovieId = 1,
-                            ActorId = 7,
-                            Character = "Black Widow",
-                            Order = 3
-                        },
-                        new
-                        {
-                            MovieId = 1,
-                            ActorId = 4,
-                            Character = "Capitán América",
-                            Order = 1
-                        },
-                        new
-                        {
-                            MovieId = 5,
-                            ActorId = 8,
-                            Character = "Neo",
-                            Order = 1
-                        });
+            modelBuilder.Entity("MoviesApi.Entities.MovieGenre", b =>
+                {
+                    b.Property<int>("MovieId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("GenreId")
+                        .HasColumnType("int");
+
+                    b.HasKey("MovieId", "GenreId");
+
+                    b.HasIndex("GenreId");
+
+                    b.ToTable("MovieGenre");
                 });
 
             modelBuilder.Entity("AuditoriumMovie", b =>
@@ -592,21 +231,6 @@ namespace MoviesApi.Migrations
                     b.HasOne("MoviesApi.Entities.Auditorium", null)
                         .WithMany()
                         .HasForeignKey("AuditoriumsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("MoviesApi.Entities.Movie", null)
-                        .WithMany()
-                        .HasForeignKey("MoviesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("GenreMovie", b =>
-                {
-                    b.HasOne("MoviesApi.Entities.Genre", null)
-                        .WithMany()
-                        .HasForeignKey("GenresId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -656,6 +280,25 @@ namespace MoviesApi.Migrations
                     b.Navigation("Movie");
                 });
 
+            modelBuilder.Entity("MoviesApi.Entities.MovieGenre", b =>
+                {
+                    b.HasOne("MoviesApi.Entities.Genre", "Genre")
+                        .WithMany("MoviesGenres")
+                        .HasForeignKey("GenreId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MoviesApi.Entities.Movie", "Movie")
+                        .WithMany("MoviesGenres")
+                        .HasForeignKey("MovieId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Genre");
+
+                    b.Navigation("Movie");
+                });
+
             modelBuilder.Entity("MoviesApi.Entities.Actor", b =>
                 {
                     b.Navigation("MovieActors");
@@ -668,9 +311,16 @@ namespace MoviesApi.Migrations
                     b.Navigation("CinemaOffer");
                 });
 
+            modelBuilder.Entity("MoviesApi.Entities.Genre", b =>
+                {
+                    b.Navigation("MoviesGenres");
+                });
+
             modelBuilder.Entity("MoviesApi.Entities.Movie", b =>
                 {
                     b.Navigation("MovieActors");
+
+                    b.Navigation("MoviesGenres");
                 });
 #pragma warning restore 612, 618
         }

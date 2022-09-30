@@ -44,15 +44,13 @@ namespace MoviesApi.Helpers
             // Movie -> MovieDTO
             CreateMap<Movie, MovieDTO>()
                 .ForMember(dto => dto.Genres, ent => ent.MapFrom(prop => 
-                                                prop.Genres.OrderByDescending(g => g.Name)))
+                    prop.MoviesGenres.Select(mg => mg.Genre).OrderByDescending(g=>g.Name)))
                 .ForMember(dto => dto.Cinemas, ent => ent.MapFrom(prop => prop.Auditoriums.Select(a => a.Cinema)))
                 .ForMember(dto => dto.Actors, ent => ent.MapFrom(prop => prop.MovieActors.Select(ma => ma.Actor)));
             // MovieCreationDTO -> Movie
             CreateMap<MovieCreationDTO, Movie>()
-                .ForMember(ent => ent.Genres, dto => dto.MapFrom(prop =>
-                        prop.GenresIds.Select(id => new Genre() { Id = id })))
-                .ForMember(ent => ent.Auditoriums, dto => dto.MapFrom(prop =>
-                        prop.AuditoriumsIds.Select(id => new Auditorium() { Id = id })))
+                .ForMember(ent => ent.MoviesGenres, dto => dto.MapFrom(prop =>
+                        prop.GenresIds.Select(id => new MovieGenre() { GenreId = id })))
                 .ForMember(ent => ent.MovieActors, dto => dto.MapFrom(prop => prop.MovieActorCreationDTOs.Select(
                     ma => new MovieActor()
                     {

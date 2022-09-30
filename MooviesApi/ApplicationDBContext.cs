@@ -22,7 +22,6 @@ namespace MoviesApi
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-            SeedingModuloConsulta.Seed(modelBuilder);
 
         }
 

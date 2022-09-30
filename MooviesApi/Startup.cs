@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using NetTopologySuite.Geometries;
+using NetTopologySuite;
 using System.Text.Json.Serialization;
 
 namespace MoviesApi
@@ -22,6 +24,8 @@ namespace MoviesApi
                 options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
             services.AddEndpointsApiExplorer();
 
+            services.AddSingleton<GeometryFactory>(NtsGeometryServices.Instance.CreateGeometryFactory(srid: 4326));
+
             services.AddDbContext<ApplicationDBContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
                 sqlServer => sqlServer.UseNetTopologySuite()));
@@ -41,6 +45,7 @@ namespace MoviesApi
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+
             app.UseHttpsRedirection();
 
             app.UseRouting();

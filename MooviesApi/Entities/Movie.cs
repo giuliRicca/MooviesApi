@@ -7,7 +7,7 @@
         public bool OnBillboard { get; set; }
         public DateTime PremiereDate { get; set; }
         public string PosterUrl { get; set; }
-        public List<Genre> Genres { get; set; }
+        public List<MovieGenre> MoviesGenres { get; set; }
         public List<Auditorium> Auditoriums { get; set; }
         public List<MovieActor> MovieActors { get; set; }
 
