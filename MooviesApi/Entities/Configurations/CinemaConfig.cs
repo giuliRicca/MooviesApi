@@ -10,16 +10,6 @@ namespace MoviesApi.Entities.Configurations
             builder.Property(prop => prop.Name)
                 .HasMaxLength(120)
                 .IsRequired();
-
-            builder.HasOne(c => c.CinemaOffer)
-                .WithOne()
-                .OnDelete(DeleteBehavior.Cascade)
-                .HasForeignKey<CinemaOffer>(co => co.CinemaId);
-
-            builder.HasMany(c => c.Auditoriums)
-                .WithOne(a => a.Cinema)
-                .OnDelete(DeleteBehavior.Cascade)
-                .HasForeignKey(a => a.CinemaId);
         }
     }
 }

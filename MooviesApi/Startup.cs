@@ -27,7 +27,7 @@ namespace MoviesApi
             services.AddSingleton<GeometryFactory>(NtsGeometryServices.Instance.CreateGeometryFactory(srid: 4326));
 
             services.AddDbContext<ApplicationDBContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
+                options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"),
                 sqlServer => sqlServer.UseNetTopologySuite()));
                 
 

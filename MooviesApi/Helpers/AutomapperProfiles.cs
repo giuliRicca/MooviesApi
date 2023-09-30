@@ -11,26 +11,15 @@ namespace MoviesApi.Helpers
         public AutomapperProfiles()
         {
             // Cinema -> CinemaDTO
-            CreateMap<Cinema, CinemaDTO>()
-                .ForMember(dto => dto.Latitude, ent => ent.MapFrom(prop => prop.Location.Y))
-                .ForMember(dto => dto.Longitude, ent => ent.MapFrom(prop => prop.Location.X));
+            CreateMap<Cinema, CinemaDTO>();
+                //.ForMember(dto => dto.Latitude, ent => ent.MapFrom(prop => prop.Location.Y))
+                //.ForMember(dto => dto.Longitude, ent => ent.MapFrom(prop => prop.Location.X));
 
             // CinemaCreationDTO -> Cinema
             var geometryFactory = NtsGeometryServices.Instance.CreateGeometryFactory(srid: 4326);
-            CreateMap<CinemaCreationDTO, Cinema>()
-                .ForMember(ent => ent.CinemaOffer, dto => dto.MapFrom(prop=> new CinemaOffer()
-                {
-                    StartDate = prop.DiscountStartDate,
-                    EndDate = prop.DiscountEndDate,
-                    DiscountPercentage = prop.DiscountPercentage
-                }))
-                .ForMember(ent => ent.Location, dto => dto.MapFrom(prop =>
-                    geometryFactory.CreatePoint(new Coordinate(prop.Longitude, prop.Latitude))));
-
-            
-
-            // AuditoriumCreationDTO -> Auditorium
-            CreateMap<AuditoriumCreationDTO, Auditorium>();
+            CreateMap<CinemaCreationDTO, Cinema>();
+                //.ForMember(ent => ent.Location, dto => dto.MapFrom(prop =>
+                //    geometryFactory.CreatePoint(new Coordinate(prop.Longitude, prop.Latitude))));
 
             
             // Actor -> ActorDTO
@@ -45,7 +34,6 @@ namespace MoviesApi.Helpers
             CreateMap<Movie, MovieDTO>()
                 .ForMember(dto => dto.Genres, ent => ent.MapFrom(prop => 
                     prop.MoviesGenres.Select(mg => mg.Genre).OrderByDescending(g=>g.Name)))
-                .ForMember(dto => dto.Cinemas, ent => ent.MapFrom(prop => prop.Auditoriums.Select(a => a.Cinema)))
                 .ForMember(dto => dto.Actors, ent => ent.MapFrom(prop => prop.MovieActors.Select(ma => ma.Actor)));
             // MovieCreationDTO -> Movie
             CreateMap<MovieCreationDTO, Movie>()

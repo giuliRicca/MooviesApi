@@ -26,8 +26,7 @@ namespace MoviesApi.Controllers
         {
             var movieDB = await context.Movies
                 .Include(m => m.MoviesGenres).ThenInclude(mg => mg.Genre)
-                .Include(m => m.Auditoriums)
-                    .ThenInclude(a => a.Cinema)
+                .Include(m=>m.CinemasMovies).ThenInclude(cm => cm.Cinema)
                 .Include(m => m.MovieActors).ThenInclude(ma => ma.Actor)
                 .FirstOrDefaultAsync(m => m.Id == id);
 
@@ -76,7 +75,7 @@ namespace MoviesApi.Controllers
         {
             Movie movie = mapper.Map<Movie>(movieCreationDTO);
             movie.MoviesGenres.ForEach(g => context.Entry(g).State = EntityState.Unchanged);
-            movie.Auditoriums.ForEach(a => context.Entry(a).State = EntityState.Unchanged);
+            movie.CinemasMovies.ForEach(a => context.Entry(a).State = EntityState.Unchanged);
 
             if (movie.MovieActors is not null)
             {

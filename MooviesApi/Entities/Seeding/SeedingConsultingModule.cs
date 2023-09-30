@@ -30,80 +30,17 @@ namespace EFCorePeliculas.Entidades.Seeding
                             robertDowney, chrisEvans, laRoca, auliCravalho, scarlettJohansson, keanuReeves);
             var geometryFactory = NtsGeometryServices.Instance.CreateGeometryFactory(srid: 4326);
 
-            var agora = new Cinema() { Id = 1, Name = "Hoyts Nuevocentro", Location = geometryFactory.CreatePoint(new Coordinate(-64.205345, -31.412223)) };
-            var sambil = new Cinema() { Id = 2, Name = "Hoyts Patioolmos", Location = geometryFactory.CreatePoint(new Coordinate(-64.18821224609333, -31.41983153249215)) };
-            var megacentro = new Cinema() { Id = 3, Name = "Gran Rex", Location = geometryFactory.CreatePoint(new Coordinate(-64.18552592889834, -31.413265739499995)) };
-            var acropolis = new Cinema() { Id = 4, Name = "Dinosaurio Mall Ruta20", Location = geometryFactory.CreatePoint(new Coordinate(-64.21224090006244, -31.42828243550159)) };
+            //var agora = new Cinema() { Id = 1, Name = "Hoyts Nuevocentro", Location = geometryFactory.CreatePoint(new Coordinate(-64.205345, -31.412223)) };
+            //var sambil = new Cinema() { Id = 2, Name = "Hoyts Patioolmos", Location = geometryFactory.CreatePoint(new Coordinate(-64.18821224609333, -31.41983153249215)) };
+            //var megacentro = new Cinema() { Id = 3, Name = "Gran Rex", Location = geometryFactory.CreatePoint(new Coordinate(-64.18552592889834, -31.413265739499995)) };
+            //var acropolis = new Cinema() { Id = 4, Name = "Dinosaurio Mall Ruta20", Location = geometryFactory.CreatePoint(new Coordinate(-64.21224090006244, -31.42828243550159)) };
 
-            var agoraCinemaOffer = new CinemaOffer { Id = 1, CinemaId = agora.Id, StartDate = DateTime.Today, EndDate = DateTime.Today.AddDays(7), DiscountPercentage = 10 };
+            //var agoraCinemaOffer = new CinemaOffer { Id = 1, CinemaId = agora.Id, StartDate = DateTime.Today, EndDate = DateTime.Today.AddDays(7), DiscountPercentage = 10 };
 
-            var Auditorium2DAgora = new Auditorium()
-            {
-                Id = 1,
-                CinemaId = agora.Id,
-                Price = 220,
-                AuditoriumType = AuditoriumType.twoDimensions
-            };
-            var Auditorium3DAgora = new Auditorium()
-            {
-                Id = 2,
-                CinemaId = agora.Id,
-                Price = 320,
-                AuditoriumType = AuditoriumType.threeDimensions
-            };
+            //var acropolisCinemaOffer = new CinemaOffer { Id = 2, CinemaId = acropolis.Id, StartDate = DateTime.Today, EndDate = DateTime.Today.AddDays(5), DiscountPercentage = 15 };
 
-            var Auditorium2DSambil = new Auditorium()
-            {
-                Id = 3,
-                CinemaId = sambil.Id,
-                Price = 200,
-                AuditoriumType = AuditoriumType.twoDimensions
-            };
-            var Auditorium3DSambil = new Auditorium()
-            {
-                Id = 4,
-                CinemaId = sambil.Id,
-                Price = 290,
-                AuditoriumType = AuditoriumType.threeDimensions
-            };
-
-
-            var Auditorium2DMegacentro = new Auditorium()
-            {
-                Id = 5,
-                CinemaId = megacentro.Id,
-                Price = 250,
-                AuditoriumType = AuditoriumType.twoDimensions
-            };
-            var Auditorium3DMegacentro = new Auditorium()
-            {
-                Id = 6,
-                CinemaId = megacentro.Id,
-                Price = 330,
-                AuditoriumType = AuditoriumType.threeDimensions
-            };
-            var AuditoriumCXCMegacentro = new Auditorium()
-            {
-                Id = 7,
-                CinemaId = megacentro.Id,
-                Price = 450,
-                AuditoriumType = AuditoriumType.CXC
-            };
-
-            var Auditorium2DAcropolis = new Auditorium()
-            {
-                Id = 8,
-                CinemaId = acropolis.Id,
-                Price = 250,
-                AuditoriumType = AuditoriumType.twoDimensions
-            };
-
-            var acropolisCinemaOffer = new CinemaOffer { Id = 2, CinemaId = acropolis.Id, StartDate = DateTime.Today, EndDate = DateTime.Today.AddDays(5), DiscountPercentage = 15 };
-
-            modelBuilder.Entity<Cinema>().HasData(acropolis, sambil, megacentro, agora);
-            modelBuilder.Entity<CinemaOffer>().HasData(acropolisCinemaOffer, agoraCinemaOffer);
-            modelBuilder.Entity<Auditorium>().HasData(Auditorium2DMegacentro, Auditorium3DMegacentro, AuditoriumCXCMegacentro, Auditorium2DAcropolis, Auditorium2DAgora, Auditorium3DAgora, Auditorium2DSambil, Auditorium3DSambil);
-
+            //modelBuilder.Entity<Cinema>().HasData(acropolis, sambil, megacentro, agora);
+            //modelBuilder.Entity<CinemaOffer>().HasData(acropolisCinemaOffer, agoraCinemaOffer);
 
             var avengers = new Movie()
             {
@@ -117,9 +54,6 @@ namespace EFCorePeliculas.Entidades.Seeding
             var MovieGenreEntity = "MovieGenre";
             var GenreIdProperty = "GenresId";
             var MovieIdProperty = "MoviesId";
-
-            var AuditoriumMovieEntity = "AuditoriumMovie";
-            var AuditoriumIdPropiedad = "AuditoriumsId";
 
             modelBuilder.Entity(MovieGenreEntity).HasData(
                 new Dictionary<string, object> { [GenreIdProperty] = acción.Id, [MovieIdProperty] = avengers.Id },
@@ -172,15 +106,6 @@ namespace EFCorePeliculas.Entidades.Seeding
               new Dictionary<string, object> { [GenreIdProperty] = drama.Id, [MovieIdProperty] = theMatrixResurrections.Id }
           );
 
-            modelBuilder.Entity(AuditoriumMovieEntity).HasData(
-             new Dictionary<string, object> { [AuditoriumIdPropiedad] = Auditorium2DSambil.Id, [MovieIdProperty] = theMatrixResurrections.Id },
-             new Dictionary<string, object> { [AuditoriumIdPropiedad] = Auditorium3DSambil.Id, [MovieIdProperty] = theMatrixResurrections.Id },
-             new Dictionary<string, object> { [AuditoriumIdPropiedad] = Auditorium2DAgora.Id, [MovieIdProperty] = theMatrixResurrections.Id },
-             new Dictionary<string, object> { [AuditoriumIdPropiedad] = Auditorium3DAgora.Id, [MovieIdProperty] = theMatrixResurrections.Id },
-             new Dictionary<string, object> { [AuditoriumIdPropiedad] = Auditorium2DMegacentro.Id, [MovieIdProperty] = theMatrixResurrections.Id },
-             new Dictionary<string, object> { [AuditoriumIdPropiedad] = Auditorium3DMegacentro.Id, [MovieIdProperty] = theMatrixResurrections.Id },
-             new Dictionary<string, object> { [AuditoriumIdPropiedad] = AuditoriumCXCMegacentro.Id, [MovieIdProperty] = theMatrixResurrections.Id }
-         );
 
 
             var keanuReevesMatrix = new MovieActor

@@ -8,8 +8,8 @@ namespace MoviesApi.Entities
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public Point Location { get; set; }
-        public CinemaOffer CinemaOffer { get; set; }
-        public HashSet<Auditorium> Auditoriums { get; set; }
+        //public Point Location { get; set; }
+        public List<CinemaMovie> CinemasMovies { get; set; }
+        //public CinemaOffer CinemaOffer { get; set; }
     }
 }

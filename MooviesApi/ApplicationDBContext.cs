@@ -15,7 +15,7 @@ namespace MoviesApi
         {
             base.ConfigureConventions(configurationBuilder);
 
-            configurationBuilder.Properties<DateTime>().HaveColumnType("Date");
+            //configurationBuilder.Properties<DateTime>().HaveColumnType("Date");
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -30,7 +30,7 @@ namespace MoviesApi
         public DbSet<Cinema> Cinemas { get; set; }
         public DbSet<Movie> Movies{ get; set; }
         public DbSet<CinemaOffer> CinemaOffers { get; set; }
-        public DbSet<Auditorium> Auditoriums { get; set; }
+        public DbSet<CinemaMovie> CinemasMovies { get; set; }
         public DbSet<MovieActor> MoviesActors{ get; set; }
     }
 }

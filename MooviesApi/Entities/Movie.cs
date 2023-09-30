@@ -8,7 +8,7 @@
         public DateTime PremiereDate { get; set; }
         public string PosterUrl { get; set; }
         public List<MovieGenre> MoviesGenres { get; set; }
-        public List<Auditorium> Auditoriums { get; set; }
+        public List<CinemaMovie> CinemasMovies { get; set; }
         public List<MovieActor> MovieActors { get; set; }
 
     }

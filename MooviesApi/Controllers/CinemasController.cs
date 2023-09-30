@@ -41,12 +41,12 @@ namespace MoviesApi.Controllers
             int maxDistance = cinemaLocationFilterDTO.distance * 1000;
             var myLocation = geometryFactory.CreatePoint(new Coordinate(cinemaLocationFilterDTO.longitude, cinemaLocationFilterDTO.latitude));
             var cinemas = await context.Cinemas
-                .OrderBy(c => c.Location.Distance(myLocation))
-                .Where(c => c.Location.IsWithinDistance(myLocation, maxDistance))
+                //.OrderBy(c => c.Location.Distance(myLocation))
+                //.Where(c => c.Location.IsWithinDistance(myLocation, maxDistance))
                 .Select(c => new 
                 {
                     Name = c.Name,
-                    Distance = Math.Round(c.Location.Distance(myLocation))
+                    //Distance = Math.Round(c.Location.Distance(myLocation))
                 }).ToListAsync();
             
             return Ok(cinemas);
@@ -56,13 +56,11 @@ namespace MoviesApi.Controllers
         public async Task<ActionResult> Get(int id)
         {
             var cinemaDB = await context.Cinemas
-                .Include(c=>c.Auditoriums)
-                .Include(c=>c.CinemaOffer)
                 .FirstOrDefaultAsync(c => c.Id == id);
 
             if (cinemaDB == null) return NotFound();
 
-            cinemaDB.Location = null;
+            //cinemaDB.Location = null;
 
             return Ok(cinemaDB);
         }
@@ -85,7 +83,6 @@ namespace MoviesApi.Controllers
         public async Task<ActionResult> Put(int id, CinemaCreationDTO cinemaCreationDTO)
         {
             var cinemaDB = await context.Cinemas
-                .Include(c => c.CinemaOffer)
                 .FirstOrDefaultAsync(c => c.Id == id);
             if (cinemaDB == null) return NotFound();
             cinemaDB = mapper.Map(cinemaCreationDTO, cinemaDB);
